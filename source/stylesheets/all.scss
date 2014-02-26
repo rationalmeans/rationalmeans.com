@@ -1,0 +1,161 @@
+@import "compass";
+
+// Color constants
+$light-gray: #777a7f;
+$dark-gray: #474a4f;
+$orange: #c66545;
+
+// Background Colors
+$main-background-color   : #eaeaea;
+$image-shadow-color: rgba(0, 0, 0, 0.26);
+
+// Text Colors
+$text-color: $dark-gray;
+$text-dropshadow-color: rgba(145, 145, 145, 0.5);
+$emphasis-color: $orange;
+
+// Link Colors
+$link-color: $orange;
+$link-hover-color: $link-color;
+
+// Fonts
+$body-font: unquote("'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif") !default;
+
+// Breakpoints
+$break-medium: 640px;
+$break-large: 940px;
+
+@mixin when-medium {
+  @media (min-width: $break-medium) { @content; }
+}
+
+@mixin when-large {
+  @media (min-width: $break-large) { @content; }
+}
+
+
+
+html, body {
+  @include when-large {
+    height: 100%;
+  }
+}
+
+body {
+  background-color: $main-background-color;
+  color: $dark-gray;
+  margin: 20px;
+
+  @include when-large {
+    margin: 0;
+    text-align: center;
+
+    // vertical centering
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      margin-right: -0.25em;
+      vertical-align: middle;
+    }
+  }
+}
+
+.container {
+  text-align: left;
+
+  @include when-large {
+    display: inline-block;
+    vertical-align: middle;
+    width: 940px;
+  }
+}
+
+.hero {
+  border-bottom: 1px solid;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+
+  .logo {
+    display: block;
+    height: 180px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 180px;
+
+    @include when-medium {
+      float: right;
+      margin: 0;
+      padding-top: 8px;
+    }
+
+    @include when-large {
+      height: 260px;
+      padding-top: 24px;
+      width: 260px;
+    }
+  }
+
+  .tagline {
+    margin-bottom: 0;
+  }
+}
+
+.contact {
+  @include no-bullets;
+  padding: 0;
+
+  li {
+    padding-bottom: 6px;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+}
+
+
+//
+// Body Text
+//
+*, html, body {
+  font: 18px/1.3 $body-font;
+  font-weight: 300;
+}
+
+//
+// Links
+//
+a {
+  @include link-colors($link-color, $link-hover-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+//
+// Headers
+//
+h1, h2, h3, h4, h5, h6 {
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: -0.03em;
+  line-height: 0.9em;
+  margin-top: 0;
+  padding-bottom: 0.5em;
+  text-rendering: optimizeLegibility;
+
+  @include when-large {
+    font-size: 80px;
+  }
+
+  strong {
+    color: $emphasis-color;
+    font-size: inherit;
+    line-height: inherit;
+    padding-bottom: inherit;
+  }
+}
