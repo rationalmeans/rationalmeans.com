@@ -22,9 +22,13 @@ $link-hover-color: $link-color;
 $body-font: unquote("'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif") !default;
 
 // Breakpoints
-$break-medium: 640px;
+$break-medium: 560px;
 $break-large: 940px;
 
+
+//
+// Mixins
+//
 @mixin when-medium {
   @media (min-width: $break-medium) { @content; }
 }
@@ -35,40 +39,15 @@ $break-large: 940px;
 
 
 
-html, body {
-  @include when-large {
-    height: 100%;
-  }
-}
-
 body {
   background-color: $main-background-color;
   color: $dark-gray;
   margin: 20px;
 
-  @include when-large {
-    margin: 0;
-    text-align: center;
-
-    // vertical centering
-    &:before {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      margin-right: -0.25em;
-      vertical-align: middle;
-    }
-  }
 }
 
 .container {
   text-align: left;
-
-  @include when-large {
-    display: inline-block;
-    vertical-align: middle;
-    width: 940px;
-  }
 }
 
 .hero {
@@ -77,22 +56,14 @@ body {
   padding-bottom: 10px;
 
   .logo {
-    display: block;
-    height: 180px;
     margin: 0 auto;
     margin-bottom: 20px;
-    width: 180px;
+    min-width: 140px;
+    max-width: 220px;
+    width: 40%;
 
-    @include when-medium {
-      float: right;
-      margin: 0;
-      padding-top: 8px;
-    }
-
-    @include when-large {
-      height: 260px;
-      padding-top: 24px;
-      width: 260px;
+    img {
+      width: 100%;
     }
   }
 
@@ -139,7 +110,7 @@ a:hover {
 //
 // Headers
 //
-h1, h2, h3, h4, h5, h6 {
+h1 {
   font-size: 50px;
   font-weight: bold;
   letter-spacing: -0.03em;
@@ -148,14 +119,66 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0.5em;
   text-rendering: optimizeLegibility;
 
-  @include when-large {
-    font-size: 80px;
-  }
-
   strong {
     color: $emphasis-color;
     font-size: inherit;
     line-height: inherit;
     padding-bottom: inherit;
+  }
+}
+
+
+//
+// Responsive
+//
+@include when-medium {
+  html, body {
+    height: 100%;
+  }
+
+  .hero {
+    .tagline {
+      width: 80%;
+    }
+
+    .logo {
+      float: right;
+      margin: 0;
+      padding-top: 8px;
+      padding-left: 20px;
+      width: 25%;
+    }
+  }
+}
+
+@include when-large {
+  body {
+    margin: 0;
+    text-align: center;
+
+    // vertical centering
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      margin-right: -0.25em;
+      vertical-align: middle;
+    }
+  }
+
+  .container {
+    display: inline-block;
+    vertical-align: middle;
+    width: 940px;
+  }
+
+  h1 {
+    font-size: 80px;
+  }
+
+  .hero .logo {
+    height: 260px;
+    padding-top: 24px;
+    width: 260px;
   }
 }
