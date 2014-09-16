@@ -32,7 +32,7 @@
     </script>
   </head>
 
-  <body class="<%= page_classes %>">
+  <body class="<%= page_classes %> <%= current_page.data.body_classes %>">
     <%= yield %>
   </body>
 </html>

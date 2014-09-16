@@ -111,12 +111,11 @@ a:hover {
 //
 // Headers
 //
-h1 {
-  font-size: 50px;
+h1, h2, h3 {
   font-weight: bold;
   letter-spacing: -0.03em;
   line-height: 0.9em;
-  margin-top: 0;
+  margin: 0;
   padding-bottom: 0.5em;
   text-rendering: optimizeLegibility;
 
@@ -125,6 +124,47 @@ h1 {
     font-size: inherit;
     line-height: inherit;
     padding-bottom: inherit;
+  }
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+  padding-bottom: 0.7em;
+}
+
+h3 {
+  font-size: 24px;
+  letter-spacing: -0.005em;
+}
+
+//
+// Clients
+//
+.clients {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  margin: 30px 0;
+  padding: 30px 0 0 0;
+}
+
+.client {
+  padding-bottom: 10px;
+
+  h3 {
+    padding-bottom: 0.2em;
+  }
+
+  ul {
+    padding: 0;
+    margin-left: 20px;
+
+    ul {
+      margin-left: 40px;
+    }
   }
 }
 
@@ -155,15 +195,20 @@ h1 {
 @include when-large {
   body {
     margin: 0;
+    margin-top: 60px;
     text-align: center;
 
     // vertical centering
-    &:before {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      margin-right: -0.25em;
-      vertical-align: middle;
+    &.centered {
+      margin-top: 0;
+
+      &:before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        margin-right: -0.25em;
+        vertical-align: middle;
+      }
     }
   }
 
