@@ -20,6 +20,10 @@ page '/*.txt', layout: false
 
 # General configuration
 
+# Use relative assets and links
+activate :relative_assets
+set :relative_links, true
+
 # Pretty URLs
 activate :directory_indexes
 
